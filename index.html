@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calculator App</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="main.js" defer></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="text">Calculator</div>
+			<div id="case">
+				<div id="display">
+					<div id="screen1"></div>
+					<div id="screen2"></div>
+				</div>
+				<div id="keys">
+					<button class="buttons non-integer control-button" id="power-button">
+						AC
+					</button>
+					<button class="buttons non-integer control-button" id="clear-button">
+						C
+					</button>
+					<button class="buttons non-integer operator" data-value="%">%</button>
+					<button class="buttons non-integer operator" data-value="/">/</button>
+
+					<button class="buttons integer" data-value="7">7</button>
+					<button class="buttons integer" data-value="8">8</button>
+					<button class="buttons integer" data-value="9">9</button>
+
+					<button class="buttons non-integer operator" data-value="*">*</button>
+
+					<button class="buttons integer" data-value="4">4</button>
+					<button class="buttons integer" data-value="5">5</button>
+					<button class="buttons integer" data-value="6">6</button>
+
+					<button class="buttons non-integer operator" data-value="-">-</button>
+
+					<button class="buttons integer" data-value="1">1</button>
+					<button class="buttons integer" data-value="2">2</button>
+					<button class="buttons integer" data-value="3">3</button>
+
+					<button class="buttons non-integer operator" data-value="+">+</button>
+
+					<button class="buttons integer" data-value=".">.</button>
+
+					<button class="buttons integer" data-value="0">0</button>
+
+					<button class="buttons non-integer" id="ans">Ans</button>
+
+					<button class="buttons operator" id="equal-button" data-value="=">
+						=
+					</button>
+				</div>
+			</div>
+			<footer>copyright 2022 @PranithAlva</footer>
+		</div>
+	</body>
+</html>

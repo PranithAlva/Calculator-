@@ -1,0 +1,214 @@
+:root {
+	--font: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+		Arial, sans-serif;
+	--display-font: monospace;
+	--font-100: 2em;
+	--font-150: 3em;
+	--font-200: 4em;
+	--font-300: 6em;
+	/*rgb(90, 3, 90);*/
+	--color-background-primary: rgb(250, 206, 8);
+	--button-color: rgb(247, 245, 245);
+	--color-primary: rgb(24, 24, 24);
+	--color-secondary: hsl(228, 39%, 28%);
+	--color-text-primary: white;
+	--color-text-secondary: grey;
+	--operator-color: rgb(194, 130, 253);
+	--dark-blue: rgb(64, 64, 248);
+	--dark-red: rgb(255, 57, 57);
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+	margin: 0;
+	padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+html,
+body {
+	height: 100%;
+}
+body {
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+	max-width: 100%;
+	display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+#container {
+	background: var(--color-background-primary);
+	font-family: var(--font);
+	text-align: center;
+	padding-bottom: 100px;
+}
+
+#text {
+	font-size: var(--font-300);
+	color: var(--color-text-primary);
+	padding-top: 300px;
+	padding-bottom: 100px;
+	transition-delay: 0.5ms;
+	animation-name: moving-text;
+	animation-duration: 2s;
+}
+
+#case {
+	background: var(--color-primary);
+	margin: 10px auto;
+	border-radius: 5%;
+	width: 500px;
+	min-height: 750px;
+	padding: 30px;
+}
+
+#display {
+	width: 99%;
+	font: var(--display-font);
+	text-align: right;
+	font-size: var(--font-100);
+	min-height: 26%;
+	background: var(--color-secondary);
+	border-radius: 10px;
+	font-family: monospace;
+	color: var(--color-text-primary);
+}
+
+#screen1 {
+	font-size: var(--font-100);
+	height: 80px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	overflow-wrap: break-word;
+}
+
+#screen2 {
+	font-size: var(--font-150);
+	overflow-wrap: break-word;
+	min-height: 100px;
+}
+
+.buttons {
+	background-color: var(--button-color);
+	border-radius: 50%;
+	max-width: 100px;
+	max-height: 100px;
+	transition-duration: 300ms;
+}
+
+#keys {
+	padding: 0px;
+	margin: 30px 15px;
+	display: grid;
+	grid-template-columns: 100px 100px 100px 100px;
+	grid-template-rows: 100px 100px 100px 100px 10s0px;
+	gap: 10px;
+}
+
+.non-integer {
+	color: var(--color-text-primary);
+	font-size: var(--font-100);
+	background: var(--operator-color);
+	width: 85px;
+	height: 85px;
+}
+
+.integer {
+	width: 80px;
+	height: 80px;
+	font-size: var(--font-100);
+}
+
+.control-button {
+	background-color: var(--dark-blue);
+}
+
+#equal-button {
+	background: var(--dark-red);
+}
+
+.buttons:active {
+	transform: scale(0.92);
+	border-radius: 20%;
+}
+
+/*animation of calculator*/
+@keyframes moving-text {
+	from {
+		font-size: 10px;
+		color: darkgoldenrod;
+	}
+	to {
+		font-size: var(--font-300);
+		color: var(--color-text-primary);
+	}
+}
+
+footer {
+	margin-top: 100px;
+	background: white;
+	color: blue;
+	font-size: var(--font-100);
+}
+/*still has some minor css errors*/

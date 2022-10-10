@@ -4,6 +4,7 @@ let operator = null;
 let ans = 0;
 let set = 1;
 let errorSet = false;
+let dotSet = false;
 
 const screen1 = document.querySelector("#screen1");
 const screen2 = document.querySelector("#screen2");
@@ -38,6 +39,7 @@ function reset() {
 	operand2 = null;
 	operator = null;
 	ans = 0;
+	dotSet = false;
 	screen2.style = "color:white";
 	screen1.innerText = "";
 	screen2.innerText = 0;
@@ -95,6 +97,7 @@ function displayAns() {
 		screen1.innerText = ans;
 		screen2.innerText = "";
 		operand2 = ans;
+		dotset = !Number.isInteger(operand2);
 		operand1 = null;
 		operator = null;
 		set = 1;
@@ -189,14 +192,21 @@ function evaluateSymbol(symbol, nextSymbol) {
 
 function getInteger() {
 	const value = this.dataset.value;
+
 	console.log(value);
 	displayText = screen1.textContent;
+	if (value == ".") {
+		if (!dotSet) dotSet = true;
+		else value = "";
+	}
 	if (!displayText) {
 		console.log(displayText);
 		displayText += value;
 	} else displayText = value;
+
 	screen1.innerText += displayText;
 	operand2 == null ? (operand2 = value) : (operand2 += value);
+
 	if (set == -1) {
 		operand2 *= -1;
 		set = 1;
@@ -222,6 +232,7 @@ function operation() {
 			return;
 		}
 		operand1 = operand2;
+		dotSet = false;
 		operand2 = null;
 		screen1.innerText += this.dataset.value;
 		if (this.dataset.value != "=") {
@@ -244,6 +255,7 @@ function operation() {
 		if (operand1 != Infinity && operand1 != -Infinity && !isNaN(operand1)) {
 			screen1.innerText = operand1;
 			screen2.innerText = "";
+			dotSet = !Number.isInteger(operand1);
 			operand2 = operand1;
 			operand1 = null;
 			operator = null;
@@ -253,6 +265,7 @@ function operation() {
 		}
 	} else {
 		evaluateSymbol(operator, value);
+		dotSet = false;
 		operator = value;
 	}
 }
@@ -272,11 +285,12 @@ clearButton.addEventListener("click", clear);
 ansButton.addEventListener("click", displayAns);
 
 //things to watch out
-//clear button is still not working
-//induce keyboard controls
-//some minor bugs here and there sed life!!
-//prevent multiple decimal places
 //round decimal to round the values
+//induce keyboard controls
+
+//didnot try to fix
+//clear button is still not working
+//some minor bugs here and there sed life!!
 
 //what we learnt is
 //nan is not equal to nan

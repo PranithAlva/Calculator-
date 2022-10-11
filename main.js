@@ -49,14 +49,6 @@ function firstCheck(op1, op2) {
 	if (op1 == null && op2 == null) return true;
 	return false;
 }
-/*
-function equalOperator(symbol) {
-	//screen2.style = "color:white";
-	if (symbol == "=" && operand1 != Infinity && !isNaN(operand1)) {
-		
-	
-	}
-}*/
 
 function otherOperator(symbol) {
 	if (symbol != "=") {
@@ -110,14 +102,13 @@ function evaluateSymbol(symbol, nextSymbol) {
 		screen1.innerText += nextSymbol;
 		operand1 = Number(operand1) + Number(operand2);
 		operand2 = null;
-		ans = operand1;
 		console.log(operand1);
-
 		if (checkAnswer(operand1)) {
 			errorMessage();
 			errorSet = true;
 			return;
-		}
+		} else operand1 = 0 + Number(operand1.toFixed(7));
+		ans = operand1;
 		console.log(operand1);
 		screen2.innerText = operand1;
 	}
@@ -127,14 +118,13 @@ function evaluateSymbol(symbol, nextSymbol) {
 		screen1.innerText += nextSymbol;
 		operand1 = Number(operand1) - Number(operand2);
 		operand2 = null;
-		ans = operand1;
-
 		console.log(operand1);
 		if (checkAnswer(operand1)) {
 			errorMessage();
 			errorSet = true;
 			return;
-		}
+		} else operand1 = 0 + Number(operand1.toFixed(7));
+		ans = operand1;
 		console.log(operand1);
 		screen2.innerText = operand1;
 	}
@@ -144,14 +134,14 @@ function evaluateSymbol(symbol, nextSymbol) {
 		screen1.innerText += nextSymbol;
 		operand1 = Number(operand1) * Number(operand2);
 		operand2 = null;
-		ans = operand1;
 		console.log(operand1);
 
 		if (checkAnswer(operand1)) {
 			errorMessage();
 			errorSet = true;
 			return;
-		}
+		} else operand1 = 0 + Number(operand1.toFixed(7));
+		ans = operand1;
 		console.log(operand1);
 		screen2.innerText = operand1;
 	}
@@ -161,7 +151,6 @@ function evaluateSymbol(symbol, nextSymbol) {
 		screen1.innerText += nextSymbol;
 		operand1 = Number(operand1) / Number(operand2);
 		operand2 = null;
-		ans = operand1;
 		console.log(operand1);
 
 		//check if quotient is correct
@@ -169,7 +158,8 @@ function evaluateSymbol(symbol, nextSymbol) {
 			errorMessage();
 			errorSet = true;
 			return;
-		}
+		} else operand1 = 0 + Number(operand1.toFixed(7));
+		ans = operand1;
 		console.log(operand1);
 		screen2.innerText = operand1;
 	}
@@ -180,12 +170,13 @@ function evaluateSymbol(symbol, nextSymbol) {
 		operand1 = Number(operand1) % Number(operand2);
 		console.log(operand1);
 		operand2 = null;
-		ans = operand1;
 		if (checkAnswer(operand1)) {
 			errorMessage();
 			errorSet = true;
 			return;
-		}
+		} else operand1 = 0 + Number(operand1.toFixed(7));
+		ans = operand1;
+		console.log(operand1);
 		screen2.innerText = operand1;
 	}
 }
@@ -253,6 +244,7 @@ function operation() {
 	if (value == "=") {
 		evaluateSymbol(operator, value);
 		if (operand1 != Infinity && operand1 != -Infinity && !isNaN(operand1)) {
+			operand1 = 0 + Number(operand1.toFixed(7));
 			screen1.innerText = operand1;
 			screen2.innerText = "";
 			dotSet = !Number.isInteger(operand1);
@@ -284,13 +276,12 @@ powerButton.addEventListener("click", reset);
 clearButton.addEventListener("click", clear);
 ansButton.addEventListener("click", displayAns);
 
-//things to watch out
-//round decimal to round the values
+/*--------things to watch out----------*/
 //induce keyboard controls
 
-//didnot try to fix
+/*--------didnot try to fix---------*/
 //clear button is still not working
 //some minor bugs here and there sed life!!
 
-//what we learnt is
+/*---------what we learnt is-------*/
 //nan is not equal to nan

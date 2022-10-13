@@ -13,24 +13,22 @@ screen2.innerText = "0";
 
 function clear() {
 	let text = screen1.textContent;
-	if (screen2.textContent != null) {
-		let subText = text.substring(0, text.length - 1);
-		screen1.innerText = subText;
-		if (operand2 !== null) {
-			operand2 = subText;
-			return;
+	let character = text.substring(text.length - 1, text.length);
+	console.log(text);
+	console.log(character);
+	console.log(operand2);
+	if (operand2 != null) {
+		if (character == ".") dotSet = false;
+		if (character == "-") set = 1;
+		text = text.substring(0, text.length - 1);
+		console.log(operand2.length);
+		if (operand2.length == 1) {
+			operand2 = null;
+			screen1.innerText = text;
+		} else {
+			operand2 = operand2.substring(0, operand2.length - 1);
+			screen1.innerText = text;
 		}
-		if (operator != null) {
-			operator = subText;
-			return;
-		}
-		if (operand1 != null) {
-			operand1 = subText;
-			return;
-		}
-	} else {
-		screen1.innerText = "";
-		screen2.innerText = "0";
 	}
 }
 
@@ -43,6 +41,8 @@ function reset() {
 	screen2.style = "color:white";
 	screen1.innerText = "";
 	screen2.innerText = 0;
+	set = 1;
+	errorSet = false;
 }
 
 function firstCheck(op1, op2) {
@@ -182,7 +182,7 @@ function evaluateSymbol(symbol, nextSymbol) {
 }
 
 function getInteger() {
-	const value = this.dataset.value;
+	let value = this.dataset.value;
 
 	console.log(value);
 	displayText = screen1.textContent;
@@ -199,7 +199,11 @@ function getInteger() {
 	operand2 == null ? (operand2 = value) : (operand2 += value);
 
 	if (set == -1) {
-		operand2 *= -1;
+		if (value == ".") operand2 = "-.";
+		else {
+			operand2 = "-" + value;
+			console.log(operand2);
+		}
 		set = 1;
 	}
 	console.log(operand2);
@@ -276,11 +280,27 @@ powerButton.addEventListener("click", reset);
 clearButton.addEventListener("click", clear);
 ansButton.addEventListener("click", displayAns);
 
-/*--------things to watch out----------*/
-//induce keyboard controls
+function matchKey(e) {
+	let selectedKey = e.key;
+	console.log(selectedKey);
+	const integers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."];
+	const operators = ["+", "-", "*", "=", "%"];
+	if (integers.includes(selectedKey)) {
+		console.log("integer");
+		document.getElementById(selectedKey).click();
+	}
+	if (operators.includes(selectedKey)) {
+		console.log("operators");
+		if (selectedKey == "=") document.getElementById("#equal-button").click();
+		else document.getElementById(selectedKey).click();
+	}
+}
+window.addEventListener("keydown", matchKey);
+
+/***********300 lines of code ************/
 
 /*--------didnot try to fix---------*/
-//clear button is still not working
+//limited functionality for clear buttonn
 //some minor bugs here and there sed life!!
 
 /*---------what we learnt is-------*/

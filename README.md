@@ -20,3 +20,6 @@ A basic claculator desigined with the help of html,css and javascript. Performs 
 
 ## Lessons learnt
 NAN is not equal to another NAN
+
+## Demo
+<a> https://pranithalva.github.io/Calculator-/</a>
